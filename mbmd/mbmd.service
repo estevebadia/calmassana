@@ -1,0 +1,9 @@
+[Unit]
+Description=mbmd
+After=syslog.target
+After=network-online.target
+[Service]
+ExecStart=/usr/local/bin/mbmd run -a /dev/ttyUSB0 -d --comset 8E1 -d ORNO3p:1
+Restart=always
+[Install]
+WantedBy=multi-user.target

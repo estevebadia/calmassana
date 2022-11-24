@@ -1,6 +1,8 @@
-# Cal massana energy meter
+# Cal Massana energy meter
 
 ## Install
+Installation instructions for a raspberry pi.
+
 ### Install Energy Meter reader MBMD
 Following official docs at [https://github.com/volkszaehler/mbmd](https://github.com/volkszaehler/mbmd).
 1. Download mbdb into raspberry PI
@@ -9,22 +11,21 @@ $ wget https://github.com/volkszaehler/mbmd/releases/download/0.13/mbmd_0.13_lin
 $ tar -xvzf mbmd_0.13_linux_armv6.tar.gz
 $ sudo cp mbmd /usr/local/bin
 ```
-2. Copy this file into `/etc/systemd/system/mbmd.service`
+2. Copy daemon definition 
 ```
-[Unit]
-Description=mbmd
-After=syslog.target
-After=network-online.target
-[Service]
-ExecStart=/usr/local/bin/mbmd run -a /dev/ttyUSB0 -d --comset 8E1 -d ORNO3p:1
-Restart=always
-[Install]
-WantedBy=multi-user.target
+$ sudo cp mbmd/mbmd.service /etc/systemd/system/mbmd.service
 ``` 
 3. Start service:
 ```
 $ sudo systemctl start mbmd
 ```
+### Install docker
+```
+$ curl -sSL https://get.docker.com | sh
+$ sudo usermod -aG docker ${USER}
+$ sudo systemctl enable docker
+```
+### Start 
 
 
 
