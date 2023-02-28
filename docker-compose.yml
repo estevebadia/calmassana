@@ -25,7 +25,7 @@ services:
     image: telegraf
     restart: always
     volumes:
-    - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
     environment:
       LOXONE_USER:
       LOXONE_PASS:
