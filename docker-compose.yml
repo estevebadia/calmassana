@@ -17,9 +17,24 @@ services:
     image: grafana/grafana:latest
     restart: always
     ports:
-      - 3000:3000    
+      - 3000:3000 
     volumes:
       - grafana-storage:/var/lib/grafana
+  
+  telegraf:
+    image: telegraf
+    restart: always
+    volumes:
+    - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    environment:
+      LOXONE_USER:
+      LOXONE_PASS:
+    depends_on:
+      - influxdb
+    links:
+      - influxdb
+    ports:
+    - '8125:8125'
 
 volumes:
   influxdb:

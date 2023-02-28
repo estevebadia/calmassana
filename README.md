@@ -25,7 +25,14 @@ $ curl -sSL https://get.docker.com | sh
 $ sudo usermod -aG docker ${USER}
 $ sudo systemctl enable docker
 ```
-### Start 
+### Config
+Create .env file with required env vars:
+```
+LOXONE_USER=calmassana
+LOXONE_PASS=XXXXXXXXXX
+```
 
-
-
+### Start docker stack
+```
+$ docker compose up -d
+```
