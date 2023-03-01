@@ -17,6 +17,7 @@ $ sudo cp mbmd/mbmd.service /etc/systemd/system/mbmd.service
 ``` 
 3. Start service:
 ```
+$ sudo systemctl enable mbmd
 $ sudo systemctl start mbmd
 ```
 ### Install docker
